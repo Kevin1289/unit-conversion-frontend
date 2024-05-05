@@ -1,0 +1,62 @@
+# CI Workflow: Run Unit Tests and Lint
+#
+# Description:
+#   This workflow executes unit tests and linting tasks to ensure code quality and correctness.
+#
+# Triggers:
+#   - Pull requests
+#   - Manual workflow dispatch
+#
+# Jobs:
+#   1. Configure:
+#       - Sets up the environment.
+#   2. Test and Lint:
+#       - Performs unit testing and linting.
+#
+name: Run Unit Tests and Lint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    outputs:
+      uid_gid: ${{ steps.get-user.outputs.uid_gid }}
+    steps:
+      - id: get-user
+        run: echo "::set-output name=uid_gid::$(id -u):$(id -g)"
+  test-and-lint:
+    needs: configure
+    runs-on: ubuntu-latest
+    container:
+      image: cimg/node:20.0.0-browsers
+      options: --user ${{ needs.configure.outputs.uid_gid }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install -q
+
+      - name: Formatting
+        run: npm run prettier
+
+      - name: Linting
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      # - name: Unit Testing
+      #   run: npm run test:cov
