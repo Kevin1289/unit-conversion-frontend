@@ -1,14 +1,14 @@
-import { render, fireEvent } from '@testing-library/react';
-import RadioSelection from './RadioSelection';
+import { render, fireEvent } from "@testing-library/react";
+import RadioSelection from "./RadioSelection";
 
-describe('Selection', () => {
-  const options = ['Kelvin', 'Celsius', 'Fahrenheit', 'Rankine'];
-  const selectedOption = 'Kelvin';
-  const title = 'Title';
-  const dataTestId = 'testID';
+describe("Selection", () => {
+  const options = ["Kelvin", "Celsius", "Fahrenheit", "Rankine"];
+  const selectedOption = "Kelvin";
+  const title = "Title";
+  const dataTestId = "testID";
   const onChange = jest.fn();
 
-  it('renders a list of radio buttons with options', () => {
+  it("renders a list of radio buttons with options", () => {
     const { getByTestId } = render(
       <RadioSelection
         options={options}
@@ -16,7 +16,7 @@ describe('Selection', () => {
         onChange={onChange}
         title={title}
         dataTestId={dataTestId}
-      />
+      />,
     );
 
     options.forEach((option) => {
@@ -25,7 +25,7 @@ describe('Selection', () => {
     });
   });
 
-  it('calls onChange handler when a radio button is selected', () => {
+  it("calls onChange handler when a radio button is selected", () => {
     const { getByTestId } = render(
       <RadioSelection
         options={options}
@@ -33,9 +33,9 @@ describe('Selection', () => {
         onChange={onChange}
         title={title}
         dataTestId={dataTestId}
-      />
+      />,
     );
-    const newSelectionId = dataTestId + 'Celsius';
+    const newSelectionId = dataTestId + "Celsius";
     const newSelectionRadio = getByTestId(newSelectionId);
     expect(newSelectionRadio.checked).toEqual(false);
     fireEvent.click(newSelectionRadio);

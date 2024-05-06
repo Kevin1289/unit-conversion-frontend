@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './NumericInput.css';
+import PropTypes from "prop-types";
+import "./NumericInput.css";
 
 const NumericInput = ({ title, value, onChange, dataTestId }) => {
   return (
@@ -8,7 +7,12 @@ const NumericInput = ({ title, value, onChange, dataTestId }) => {
       <label>
         {title}
         <br />
-        <input type="number" value={value} onChange={onChange} data-testid={dataTestId} />
+        <input
+          type="number"
+          value={value}
+          onChange={onChange}
+          data-testid={dataTestId}
+        />
       </label>
     </div>
   );
@@ -18,7 +22,7 @@ NumericInput.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  dataTestId: PropTypes.string
+  dataTestId: PropTypes.string,
 };
 
 export default NumericInput;

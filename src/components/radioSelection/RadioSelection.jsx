@@ -1,7 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const RadioSelection = ({ options, selectedOption, onChange, title, dataTestId }) => {
+const RadioSelection = ({
+  options,
+  selectedOption,
+  onChange,
+  title,
+  dataTestId,
+}) => {
   return (
     <div className="RadioSelection-container">
       <label htmlFor={title}>{title}</label>
@@ -29,7 +34,7 @@ RadioSelection.propTypes = {
   options: PropTypes.array.isRequired,
   selectedOption: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  dataTestId: PropTypes.string
+  dataTestId: PropTypes.string,
 };
 
 export default RadioSelection;
