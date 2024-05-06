@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import "./NumericInput.css";
+import PropTypes from 'prop-types';
+import './NumericInput.css';
 
 const NumericInput = ({ title, value, onChange, dataTestId }) => {
   return (
@@ -23,7 +23,7 @@ NumericInput.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
-  dataTestId: PropTypes.string,
+  dataTestId: PropTypes.string
 };
 
 export default NumericInput;

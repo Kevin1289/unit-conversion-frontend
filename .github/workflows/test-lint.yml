@@ -18,7 +18,7 @@ name: Run Unit Tests and Lint
 on:
   push:
     branches:
-      - "**"
+      - '**'
   pull_request:
     branches:
       - master
@@ -26,17 +26,12 @@ on:
 jobs:
   configure:
     runs-on: ubuntu-latest
-    outputs:
-      uid_gid: ${{ steps.get-user.outputs.uid_gid }}
-    steps:
-      - id: get-user
-        run: echo "::set-output name=uid_gid::$(id -u):$(id -g)"
+
   test-and-lint:
     needs: configure
     runs-on: ubuntu-latest
     container:
       image: cimg/node:20.0.0-browsers
-      options: --user ${{ needs.configure.outputs.uid_gid }}
 
     steps:
       - uses: actions/checkout@v2
@@ -49,11 +44,11 @@ jobs:
       - name: Install dependencies
         run: npm install -q
 
-      # - name: Formatting
-      #   run: npm run prettier
+      - name: Formatting
+        run: npm run prettier
 
-      # - name: Linting
-      #   run: npm run lint
+      - name: Linting
+        run: npm run lint
 
       - name: Build
         run: npm run build

@@ -1,23 +1,23 @@
-import { render, fireEvent } from "@testing-library/react";
-import NumericInput from "./NumericInput";
+import { render, fireEvent } from '@testing-library/react';
+import NumericInput from './NumericInput';
 
-describe("NumericInput", () => {
-  const title = "Name";
+describe('NumericInput', () => {
+  const title = 'Name';
   const value = 100;
   const onChange = jest.fn();
 
-  it("renders a numericInput with title and value", () => {
+  it('renders a numericInput with title and value', () => {
     const { getByLabelText } = render(
-      <NumericInput title={title} value={value} onChange={onChange} />,
+      <NumericInput title={title} value={value} onChange={onChange} />
     );
 
     const numericInput = getByLabelText(title);
     expect(numericInput).toHaveValue(value);
   });
 
-  it("calls onChange handler when the numericInput value changes", () => {
+  it('calls onChange handler when the numericInput value changes', () => {
     const { getByLabelText } = render(
-      <NumericInput title={title} value={value} onChange={onChange} />,
+      <NumericInput title={title} value={value} onChange={onChange} />
     );
 
     const numericInput = getByLabelText(title);

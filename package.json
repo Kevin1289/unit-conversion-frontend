@@ -17,7 +17,20 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:cov": "react-scripts test --watchAll=false --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "prettier:check": "prettier -c ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
+    "prettier:fix": "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "prettier"
+    ]
   },
   "browserslist": {
     "production": [
@@ -32,7 +45,19 @@
     ]
   },
   "devDependencies": {
-    "globals": "^15.1.0"
+    "@eslint/js": "^9.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "globals": "^15.1.0",
+    "prettier": "^2.7.1",
+    "eslint": "8.6.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-unicorn": "40.0.0"
   },
   "jest": {
     "collectCoverageFrom": [
