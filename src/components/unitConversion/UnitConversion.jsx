@@ -30,7 +30,8 @@ const UnitConversion = () => {
   };
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    // parse to number. can be a float
+    setInputValue(parseFloat(event.target.value));
   };
 
   const handleInputUnitChange = (event) => {
@@ -42,12 +43,12 @@ const UnitConversion = () => {
   };
 
   const handleStudentResponseChange = (event) => {
-    setStudentResponse(event.target.value);
+    setStudentResponse(parseFloat(event.target.value));
   };
 
   const checkAnswer = async () => {
     const response = await fetch(
-      `http://18.191.155.56:8080/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`
+      `${process.env.REACT_APP_SERVER_HOST}/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`,
     );
     const data = await response.json();
 

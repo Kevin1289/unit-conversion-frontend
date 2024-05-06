@@ -8,7 +8,13 @@ const NumericInput = ({ title, value, onChange, dataTestId }) => {
       <label>
         {title}
         <br />
-        <input type="number" value={value} onChange={onChange} data-testid={dataTestId} />
+        <input
+          type="number"
+          step="any"
+          value={value}
+          onChange={onChange}
+          data-testid={dataTestId}
+        />
       </label>
     </div>
   );
@@ -16,7 +22,7 @@ const NumericInput = ({ title, value, onChange, dataTestId }) => {
 
 NumericInput.propTypes = {
   title: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
   dataTestId: PropTypes.string
 };
