@@ -1,0 +1,13 @@
+.numericInput-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+}
+
+.numericInput-container label {
+  display: block;
+  width: 100%;
+}
