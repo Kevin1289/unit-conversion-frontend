@@ -3,6 +3,9 @@ import RadioSelection from '../radioSelection/RadioSelection';
 import NumericInput from '../numericInput/NumericInput';
 import './UnitConversion.css';
 
+const REACT_APP_API_URL =
+  process.env.REACT_APP_API_URL || 'http://kw-unit-conversion.us-east-1.elasticbeanstalk.com';
+
 // enum for correct, incorrect, and invalid
 const Status = {
   CORRECT: 'Correct',
@@ -47,10 +50,12 @@ const UnitConversion = () => {
   };
 
   const checkAnswer = async () => {
+    console.log(REACT_APP_API_URL);
+    console.log(
+      `${REACT_APP_API_URL}/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`
+    );
     const response = await fetch(
-      `${
-        process.env.REACT_APP_SERVER_HOST
-      }/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`
+      `${REACT_APP_API_URL}/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`
     );
     const data = await response.json();
 
@@ -120,7 +125,6 @@ const UnitConversion = () => {
       <button
         onClick={checkAnswer}
         disabled={!inputValue || !studentResponse}
-        // eslint-disable-next-line prettier/prettier
         data-testid="CheckAnswer"
       >
         Check Answer
