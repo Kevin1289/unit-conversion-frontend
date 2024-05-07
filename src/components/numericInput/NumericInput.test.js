@@ -6,7 +6,7 @@ describe('NumericInput', () => {
   const value = 100;
   const onChange = jest.fn();
 
-  it('renders a numericInput with title and value', () => {
+  it('Test to see if a numericInput with title and value is rendered', () => {
     const { getByLabelText } = render(
       <NumericInput title={title} value={value} onChange={onChange} />
     );
@@ -15,7 +15,7 @@ describe('NumericInput', () => {
     expect(numericInput).toHaveValue(value);
   });
 
-  it('calls onChange handler when the numericInput value changes', () => {
+  it('Test to see if onChange is called when the numericInput value changes', () => {
     const { getByLabelText } = render(
       <NumericInput title={title} value={value} onChange={onChange} />
     );

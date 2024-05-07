@@ -33,8 +33,12 @@ const UnitConversion = () => {
   };
 
   const handleInputChange = (event) => {
-    // parse to number. can be a float
-    setInputValue(parseFloat(event.target.value));
+    const numberVal = parseFloat(event.target.value);
+    if (isNaN(numberVal)) {
+      setInputValue(0);
+      return;
+    }
+    setInputValue(numberVal);
   };
 
   const handleInputUnitChange = (event) => {
@@ -46,14 +50,15 @@ const UnitConversion = () => {
   };
 
   const handleStudentResponseChange = (event) => {
-    setStudentResponse(parseFloat(event.target.value));
+    const numberVal = parseFloat(event.target.value);
+    if (isNaN(numberVal)) {
+      setStudentResponse(0);
+      return;
+    }
+    setStudentResponse(numberVal);
   };
 
   const checkAnswer = async () => {
-    console.log(REACT_APP_API_URL);
-    console.log(
-      `${REACT_APP_API_URL}/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`
-    );
     const response = await fetch(
       `${REACT_APP_API_URL}/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`
     );
