@@ -48,7 +48,9 @@ const UnitConversion = () => {
 
   const checkAnswer = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_SERVER_HOST}/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`,
+      `${
+        process.env.REACT_APP_SERVER_HOST
+      }/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`
     );
     const data = await response.json();
 
@@ -75,8 +77,7 @@ const UnitConversion = () => {
   };
 
   return (
-    <div
-      className={`container ${conversionOutput && `background-${conversionOutput.toLowerCase()}`}`}>
+    <div className={`container ${`background-${conversionOutput?.toLowerCase()}`}`}>
       <h1>Unit Conversion</h1>
       <RadioSelection
         title="Conversion Type"
@@ -119,7 +120,9 @@ const UnitConversion = () => {
       <button
         onClick={checkAnswer}
         disabled={!inputValue || !studentResponse}
-        data-testid="CheckAnswer">
+        // eslint-disable-next-line prettier/prettier
+        data-testid="CheckAnswer"
+      >
         Check Answer
       </button>
 
