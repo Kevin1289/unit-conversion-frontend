@@ -20,8 +20,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "prettier": "prettier -c './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
-    "prettier:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "prettier": "prettier -c ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
+    "prettier:fix": "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc"
   },
   "eslintConfig": {
     "extends": [
@@ -52,7 +52,10 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}"
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/serviceWorker.js",
+      "!src/reportWebVitals.js"
     ],
     "coverageThreshold": {
       "global": {

@@ -1,4 +1,3 @@
-import './App.css';
 import UnitConversion from './components//unitConversion/UnitConversion';
 
 function App() {
