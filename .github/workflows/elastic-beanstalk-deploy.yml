@@ -6,10 +6,9 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest # the OS your job should run on
-    strategy:
-      matrix:
-        node-version: [16.x]
+    name: Deploy to AWS Elastic Beanstalk
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Latest Repo
         uses: actions/checkout@master
