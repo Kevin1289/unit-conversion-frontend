@@ -107,3 +107,14 @@ This application provides a UI to assist teachers with conversion validation.
 ## Application UI
 
 ![Application UI](assets/application_ui.png)
+
+# Development prioritization in near future:
+
+1. Allow CICD pipeline to deploy to multiple environments (dev, staging, prod)
+2. Implement proper versioning of the application and docker image
+3. Implement logs and monitoring for the application (AWS CloudWatch, DataDog)
+4. Improve CD pipeline to leverage Terraform for infrastructure as code
+5. Implement a caching layer to improve performance and repetative operations (CDN, React Memoization)
+6. Leverage professional documentation tools like Confluence for better documentation and knowledge sharing among developers
+7. Improve UI design to be more oriented towards teachers (styling, images)
+8. Implement a login feature so students are not able to access the application (avoid cheating)
