@@ -11,14 +11,14 @@
 #   1. Configure:
 #       - Sets up the environment.
 #   2. Test and Lint:
-#       - Performs unit testing and linting.
+#       - Performs unit testing and linting and security scanning tasks.
 #
 name: Run Unit Tests and Lint
 
 on:
   push:
     branches:
-      - "**"
+      - '**'
   pull_request:
     branches:
       - master
@@ -50,3 +50,11 @@ jobs:
 
       - name: Unit Testing
         run: npm run test:cov
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true # To make sure that SARIF upload gets called
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --sarif-file-output=snyk.sarif --severity-threshold=high
