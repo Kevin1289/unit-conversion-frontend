@@ -35,10 +35,13 @@ describe('Selection', () => {
         dataTestId={dataTestId}
       />
     );
+
     const newSelectionId = dataTestId + 'Celsius';
     const newSelectionRadio = getByTestId(newSelectionId);
     expect(newSelectionRadio.checked).toEqual(false);
+
     fireEvent.click(newSelectionRadio);
+
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });

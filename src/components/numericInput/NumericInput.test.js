@@ -12,6 +12,7 @@ describe('NumericInput', () => {
     );
 
     const numericInput = getByLabelText(title);
+
     expect(numericInput).toHaveValue(value);
   });
 
@@ -21,7 +22,9 @@ describe('NumericInput', () => {
     );
 
     const numericInput = getByLabelText(title);
+
     fireEvent.change(numericInput, { target: { value: 101 } });
+
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });
