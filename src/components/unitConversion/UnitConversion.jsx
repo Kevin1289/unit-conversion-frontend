@@ -77,10 +77,11 @@ const UnitConversion = () => {
       <div data-testid="GuideText">
         <h2>Guide</h2>
         <p>1. Select the conversion type (Temperature or Volume).</p>
-        <p>2. Enter the numerical value in the &quot;Input Numerical Value&quot; numericInput.</p>
+        <p>2. Enter the input numerical value in &quot;Input Numerical Value&quot;</p>
         <p>3. Select the input unit of measure.</p>
         <p>4. Select the target unit of measure.</p>
-        <p>5. The student response output will be displayed based on the conversion.</p>
+        <p>5. Enter the student response output in &quot;Student Response Output&quot;</p>
+        <p>6. Click the &quot;Check Answer&quot; button to see the result.</p>
       </div>
     );
   };
