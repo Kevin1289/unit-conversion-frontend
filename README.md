@@ -47,10 +47,16 @@ npm start
 
 ### Running the Tests
 
-1. Run the tests
+1. Run the unit tests
 
 ```
 npm test
+```
+
+2. Run the Dependency Vulnerability Check
+
+```
+npm run test:security
 ```
 
 ### Code Linting and Formatting
