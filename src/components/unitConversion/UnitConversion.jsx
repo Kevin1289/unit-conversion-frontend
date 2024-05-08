@@ -130,11 +130,7 @@ const UnitConversion = () => {
         dataTestId="StudentResponse"
       />
       <br />
-      <button
-        onClick={checkAnswer}
-        disabled={!inputValue || !studentResponse}
-        data-testid="CheckAnswer"
-      >
+      <button onClick={checkAnswer} data-testid="CheckAnswer">
         Check Answer
       </button>
 
