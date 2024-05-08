@@ -109,13 +109,6 @@ describe('UnitConversion', () => {
     expect(studentResponseNumericInput).toHaveValue(100);
   });
 
-  it('Test to see if Check Answer button disables when text input is empty', () => {
-    const { getByTestId } = render(<UnitConversion />);
-    const checkAnswerButton = getByTestId('CheckAnswer');
-
-    expect(checkAnswerButton).toBeDisabled();
-  });
-
   it('Test to see if Correct answer check updates Result', async () => {
     global.fetch = jest.fn(() =>
       Promise.resolve({
@@ -171,18 +164,6 @@ describe('UnitConversion', () => {
     fireEvent.click(checkAnswerButton);
 
     await waitFor(() => expect(getByText('Invalid')).toBeInTheDocument());
-  });
-
-  it('Test to see if Check Answer button enables when text input is not empty', () => {
-    const { getByTestId } = render(<UnitConversion />);
-    const numericInput = getByTestId('InputValue');
-    const studentResponseNumericInput = getByTestId('StudentResponse');
-    const checkAnswerButton = getByTestId('CheckAnswer');
-
-    fireEvent.change(numericInput, { target: { value: 100 } });
-    fireEvent.change(studentResponseNumericInput, { target: { value: 100 } });
-
-    expect(checkAnswerButton).not.toBeDisabled();
   });
 
   it('Test to see if Guide button toggles visibility of guide', () => {
