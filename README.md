@@ -100,4 +100,10 @@ This application provides a UI to assist teachers with conversion validation.
 3. The application is deployed in the `us-east-1` region.
 4. The application pushes docker image to Docker Hub for accessability and versioning.
 
+## Frontend Infrastructure
+
 ![Frontend Infrastructure](assets/frontend_infrastructure.png)
+
+## Application UI
+
+![Application UI](assets/application_ui.png)
