@@ -33,8 +33,12 @@ const UnitConversion = () => {
   };
 
   const handleInputChange = (event) => {
-    // parse to number. can be a float
-    setInputValue(parseFloat(event.target.value));
+    const numberVal = parseFloat(event.target.value);
+    if (isNaN(numberVal)) {
+      setInputValue(0);
+      return;
+    }
+    setInputValue(numberVal);
   };
 
   const handleInputUnitChange = (event) => {
@@ -46,19 +50,19 @@ const UnitConversion = () => {
   };
 
   const handleStudentResponseChange = (event) => {
-    setStudentResponse(parseFloat(event.target.value));
+    const numberVal = parseFloat(event.target.value);
+    if (isNaN(numberVal)) {
+      setStudentResponse(0);
+      return;
+    }
+    setStudentResponse(numberVal);
   };
 
   const checkAnswer = async () => {
-    console.log(REACT_APP_API_URL);
-    console.log(
-      `${REACT_APP_API_URL}/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`
-    );
     const response = await fetch(
       `${REACT_APP_API_URL}/unitconversion?type=${conversionType.toLowerCase()}&value=${inputValue}&unit=${inputUnit.toLowerCase()}&target=${targetUnit.toLowerCase()}&response=${studentResponse}`
     );
     const data = await response.json();
-
     if (data.status === 'CORRECT') {
       setConversionOutput(Status.CORRECT);
     } else if (data.status === 'INCORRECT') {
@@ -70,7 +74,7 @@ const UnitConversion = () => {
 
   const Guide = () => {
     return (
-      <div>
+      <div data-testid="GuideText">
         <h2>Guide</h2>
         <p>1. Select the conversion type (Temperature or Volume).</p>
         <p>2. Enter the numerical value in the &quot;Input Numerical Value&quot; numericInput.</p>
@@ -82,7 +86,10 @@ const UnitConversion = () => {
   };
 
   return (
-    <div className={`container ${`background-${conversionOutput?.toLowerCase()}`}`}>
+    <div
+      className={`container ${`background-${conversionOutput?.toLowerCase()}`}`}
+      data-testid="UnitConversion"
+    >
       <h1>Unit Conversion</h1>
       <RadioSelection
         title="Conversion Type"
@@ -131,12 +138,12 @@ const UnitConversion = () => {
       </button>
 
       {conversionOutput && (
-        <p>
+        <div data-testid="ConversionOutput">
           Result: <b>{conversionOutput}</b>
-        </p>
+        </div>
       )}
       <br />
-      <button onClick={() => setShowGuide(!showGuide)}>
+      <button onClick={() => setShowGuide(!showGuide)} data-testid="GuideButton">
         {showGuide ? 'Hide Guide' : 'Show Guide'}
       </button>
 

@@ -8,7 +8,7 @@ describe('Selection', () => {
   const dataTestId = 'testID';
   const onChange = jest.fn();
 
-  it('renders a list of radio buttons with options', () => {
+  it('Test to see if all radio button iotins are rendered', () => {
     const { getByTestId } = render(
       <RadioSelection
         options={options}
@@ -25,7 +25,7 @@ describe('Selection', () => {
     });
   });
 
-  it('calls onChange handler when a radio button is selected', () => {
+  it('Test to see if onChange is called when a radio button is selected', () => {
     const { getByTestId } = render(
       <RadioSelection
         options={options}
@@ -35,10 +35,13 @@ describe('Selection', () => {
         dataTestId={dataTestId}
       />
     );
+
     const newSelectionId = dataTestId + 'Celsius';
     const newSelectionRadio = getByTestId(newSelectionId);
     expect(newSelectionRadio.checked).toEqual(false);
+
     fireEvent.click(newSelectionRadio);
+
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });
