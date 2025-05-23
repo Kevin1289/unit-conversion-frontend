@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Use a lightweight Node.js image for the production environment
-FROM node:alpine
+FROM node:23.11.1-alpine3.21
 
 # Set the working directory inside the container
 WORKDIR /app
